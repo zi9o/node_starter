@@ -1,0 +1,71 @@
+version: '3'
+
+services:
+  nginx:
+    build:
+      context: .
+      dockerfile: ./nginx/Dockerfile
+    networks:
+      - starter-net
+    depends_on:
+      - api
+      - app
+    ports:
+      - '80:80'
+
+  db:
+    build: ./db
+    networks:
+      - starter-net
+    volumes:
+      - starter-db:/var/lib/postgresql/data
+      - ./db:/app
+    environment:
+      POSTGRES_USER: "admin"
+      POSTGRES_PASSWORD: "12345"
+      POSTGRES_DB: "starter"
+    command: postgres -c log_timezone='UTC'
+    ports:
+      - '5432:5432'
+
+  api:
+    build: ./api
+    networks:
+      - starter-net
+    depends_on:
+      - db
+    environment:
+      PGHOST: "db"
+      PGPORT: 5432
+      PGUSER: "admin"
+      PGPASSWORD: "12345"
+      PGDATABASE: "starter"
+      LOGS: "API,SQL,SECURITY"
+      DEBUG: "api:*"
+      ROARR_LOG: "true"
+      API_URL: 'http://api'
+      API_LOGGER_LEVEL: 'debug'
+      TZ: "UTC"
+      NODE_ENV: "development"
+      PRIVATE_KEY: 'secretKey'
+      MAIL_JET_PubKey: 'secretKey'
+      MAIL_JET_PriKey: 'secretKey'
+      TOKEN_EXPIRATION_TIME: '3m'
+    volumes:
+      - './api/src:/app/src'
+      - './api/gulpfile.js:/app/gulpfile.js'
+      - './api/bin:/app/bin'
+      - './api/test:/app/test'
+      - './api/config:/app/config'
+    ports:
+      - 9230:9230
+
+  app:
+    build: ./app
+    networks:
+      - starter-net
+networks:
+  starter-net:
+
+volumes:
+  starter-db:

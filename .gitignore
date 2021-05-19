@@ -1,0 +1,17 @@
+.idea/
+.project
+node_modules
+npm-debug.log
+
+# to override with local env
+docker-compose.override.yml
+
+# ignore vscode file history
+.history
+
+
+#vs-code sql sessions
+*.session.sql
+
+# locals
+.vscode/settings.json

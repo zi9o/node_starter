@@ -1,0 +1,55 @@
+{
+  "plugins": [
+    "sql",
+    "jest"
+  ],
+  "settings": {
+    "jest": {
+      "version": 26
+    }
+  },
+  "parser": "babel-eslint",
+  "ignorePatterns": ["lib/**/*.js", "node_modules/", "flow-typed/"],
+  "rules": {
+    "indent": ["error", 2],
+    "handle-callback-err": "error",
+    "require-await": "error",
+    "no-var": "error",
+    "max-len": [2, 150],
+    "space-before-function-paren": "off",
+    "camelcase": "off",
+    "quotes": [0],
+    "operator-linebreak": "off",
+    "jest/no-disabled-tests": "warn",
+    "jest/no-focused-tests": "error",
+    "jest/no-identical-title": "error",
+    "jest/prefer-to-have-length": "warn",
+    "jest/valid-expect": "error",
+    "sql/format": [
+      2,
+      {
+        "ignoreExpressions": true,
+        "ignoreInline": true,
+        "ignoreTagless": false
+      }
+    ],
+    "sql/no-unsafe-query": [
+      2,
+      {
+        "allowLiteral": false
+      }
+    ]
+  },
+  "env": {
+    "es6": true,
+    "jest/globals": true
+  },
+  "globals": {
+    "describe": true,
+    "test": true,
+    "expect": true,
+    "beforeEach": true,
+    "afterEach": true,
+    "Promise": "off"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "defaultEnv": {"ENV": "NODE_ENV"},
+  "development": {
+    "driver": "pg"
+  },
+  "production": {
+    "driver": "pg"
+  },
+  "": {
+    "driver": "pg"
+  }
+}
