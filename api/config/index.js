@@ -24,9 +24,13 @@ module.exports.config = {
   logger: {
     level: process.env.API_LOGGER_LEVEL,
   },
+  app: {
+    language: process.env.LANGUAGE || 'fr',
+  },
   auth: {
     privateKey: process.env.PRIVATE_KEY,
     algorithm: 'RS256',
+    SALT_WORK_FACTOR: 10,
     tokenExpirationPeriod: process.env.TOKEN_EXPIRATION_TIME,
   },
   database: {

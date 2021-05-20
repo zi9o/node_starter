@@ -34,7 +34,7 @@ exports.up = function (db) {
       message: 'string',
       user_id: {
         type: 'int',
-        notNull: true,
+        notNull: false,
         foreignKey: {
           name: 'logs_user_fk',
           table: 'users',
