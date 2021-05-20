@@ -61,15 +61,15 @@ module.exports = class YourCustomTransport extends Transport {
         log.push(new Date());
 
         //Save the log
-        // connection.query('INSERT INTO user_log(level, message, user_id, meta, timestamp) VALUES($1, $2, $3, $4, $5)', log, function(err) {
-        //   if (err) {
-        //     return callback(err, null);
-        //   }
-        //
-        //   //finished
-        //   connection.release();
-        //   callback(null, true);
-        // });
+        connection.query('INSERT INTO user_logs(level, message, user_id, meta, timestamp) VALUES($1, $2, $3, $4, $5)', log, function(err) {
+          if (err) {
+            return callback(err, null);
+          }
+
+          //finished
+          connection.release();
+          callback(null, true);
+        });
 
       }));
 

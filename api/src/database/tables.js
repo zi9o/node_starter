@@ -1,6 +1,6 @@
 const TABLE_NAMES = {
   PLAYERS: 'players',
-  USER_LOGS: 'user_log',
+  USER_LOGS: 'user_logs',
   USERS: 'users',
   MIGRATIONS: 'migrations',
 };

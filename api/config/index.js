@@ -30,7 +30,8 @@ module.exports.config = {
     tokenExpirationPeriod: process.env.TOKEN_EXPIRATION_TIME,
   },
   database: {
-    connectionUri: `postgresql://${process.env.PGUSER}:${process.env.PGPASSWORD}@${process.env.PGHOST}:${process.env.PGPORT}/${process.env.PGDATABASE}`,
+    connectionUri: `postgresql://${process.env.PGUSER}:${process.env.PGPASSWORD}`
+      + `@${process.env.PGHOST}:${process.env.PGPORT}/${process.env.PGDATABASE}`,
     host: process.env.PGHOST,
     port: parseInt(process.env.PGPORT, 10),
     user: process.env.PGUSER,
