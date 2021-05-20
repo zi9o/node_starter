@@ -8,9 +8,12 @@ const logger = require('morgan');
 const helmet = require('helmet');
 const errorParser = require('./middlewares/error-parser.middleware');
 
+const {requireAuthentication} = require('./middlewares/auth.middleware');
+
 
 const indexRouter = require('./routes/index.route');
 const authRouter = require('./routes/auth.route');
+const playerRouter = require('./routes/players.route');
 
 const app = express();
 if (config.isProduction) {
@@ -44,6 +47,10 @@ app.use(bodyParser.urlencoded({ limit: "20mb", extended: true, parameterLimit: 5
 
 app.use('/v1/', indexRouter);
 app.use('/v1/', authRouter);
+
+// All declared routes would need authorization after applying the authorization middleware
+app.use(requireAuthentication);
+app.use('/v1/players', playerRouter);
 app.use(errorParser);
 
 

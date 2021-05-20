@@ -1,7 +1,7 @@
 // @flow
 
-const {CommonErrors, AppError, MESSAGES} = require('../../common/_errors');
-const {ACCESS_DENIED_RESPONSE} = require('../../common/_constants');
+const {CommonErrors, AppError, MESSAGES} = require('../common/_errors');
+const {ACCESS_DENIED_RESPONSE} = require('../common/_constants');
 const {config} = require('../../config');
 const jwt = require('jsonwebtoken');
 const {UserModel} = require('../models/user.model');
